@@ -184,7 +184,7 @@ let
         example = 0.1;
         description = ''
           Configure the scrolling speed of the touchpad. Lower is slower.
-          If unset, KDE will default to 0.3 .
+          If unset, KDE Plasma will default to 0.3 .
         '';
       };
       rightClickMethod = lib.mkOption {
