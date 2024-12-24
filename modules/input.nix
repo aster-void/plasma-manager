@@ -43,16 +43,10 @@ let
       variant = lib.mkOption {
         type = with lib.types; nullOr str;
         default = null;
-        example = [
-          "eng"
-          "mac"
-          "dvorak"
-          # these two examples below exists to tell that the spacer is not consistent (- or _).
-          "workman-intl"
-          "colemak_dh_wide_iso"
-        ];
+        example = "eng";
         description = ''
           Keyboard layout variant.
+          examples: "mac" "dvorak" "workman-intl" "colemak_dh_wide_iso"
         '';
         apply = builtins.toString;
       };
