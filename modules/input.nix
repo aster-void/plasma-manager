@@ -178,6 +178,16 @@ let
         '';
         apply = method: if (method == null) then null else scrollMethods."${method}";
       };
+      scrollSpeed = lib.mkOption {
+        type = with lib.types; nullOr (numbers.between 0.1 20);
+        default = null;
+        example = 0.1;
+        description = ''
+          Configure scrolling speed the touchpad. Lower is slower.
+          If unset, KDE will default to 0.3 .
+        '';
+        apply = method: if (method == null) then null else scrollMethods."${method}";
+      };
       rightClickMethod = lib.mkOption {
         type = with lib.types; nullOr (enum (builtins.attrNames rightClickMethods));
         default = null;
@@ -222,6 +232,7 @@ let
         TapAndDrag = touchpad.tapAndDrag;
         TapDragLock = touchpad.tapDragLock;
         ScrollMethod = touchpad.scrollMethod;
+        ScrollFactor = touchpad.scrollSpeed;
         ClickMethod = touchpad.rightClickMethod;
         LmrTapButtonMap = touchpad.twoFingerTap;
       };
@@ -380,10 +391,12 @@ in
           !(lib.all (c: builtins.elem (lib.toLower c) validChars) (hexChars hex))
           && (builtins.stringLength hex) > 0;
         allHexCodes = lib.flatten (
-          map (t: [
-            t.vendorId
-            t.productId
-          ]) (cfg.input.touchpads ++ cfg.input.mice)
+          map
+            (t: [
+              t.vendorId
+              t.productId
+            ])
+            (cfg.input.touchpads ++ cfg.input.mice)
         );
         invalidHexCodes = builtins.filter hexCodeInvalid allHexCodes;
       in
