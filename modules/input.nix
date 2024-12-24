@@ -183,7 +183,7 @@ let
         default = null;
         example = 0.1;
         description = ''
-          Configure scrolling speed the touchpad. Lower is slower.
+          Configure the scrolling speed of the touchpad. Lower is slower.
           If unset, KDE will default to 0.3 .
         '';
       };
