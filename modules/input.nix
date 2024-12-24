@@ -186,7 +186,6 @@ let
           Configure scrolling speed the touchpad. Lower is slower.
           If unset, KDE will default to 0.3 .
         '';
-        apply = method: if (method == null) then null else scrollMethods."${method}";
       };
       rightClickMethod = lib.mkOption {
         type = with lib.types; nullOr (enum (builtins.attrNames rightClickMethods));
