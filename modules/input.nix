@@ -46,7 +46,7 @@ let
         example = "eng";
         description = ''
           Keyboard layout variant.
-          examples: "mac" "dvorak" "workman-intl" "colemak_dh_wide_iso"
+          Examples: "mac", "dvorak", "workman-intl", and "colemak_dh_wide_iso"
         '';
         apply = builtins.toString;
       };
